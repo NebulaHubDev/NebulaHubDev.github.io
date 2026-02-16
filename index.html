@@ -399,6 +399,40 @@
     .testimonials-grid,
     .pricing-grid { width: var(--container); margin-inline: auto; }
 
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .why-card {
+      background: var(--card);
+      border: 1px solid rgba(139, 92, 246, 0.22);
+      border-radius: 16px;
+      padding: 1.2rem;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .why-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(139, 92, 246, 0.45);
+    }
+
+    .why-card i {
+      color: var(--primary);
+      font-size: 1.25rem;
+      margin-bottom: 0.55rem;
+    }
+
+    .why-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .why-card p { color: var(--text-muted); }
+
     .faq-container {
       max-width: 900px;
       display: grid;
@@ -766,9 +800,11 @@
         </button>
 
         <div class="nav-links" id="navLinks">
-          <a href="#faq" target="_self">FAQ</a>
-          <a href="#testimonials" target="_self">Reviews</a>
+          <a href="#why" target="_self">Why Use</a>
           <a href="#pricing" target="_self">Pricing</a>
+          <a href="#hwid" target="_self">HWID</a>
+          <a href="#testimonials" target="_self">Reviews</a>
+          <a href="#faq" target="_self">FAQ</a>
           <a href="https://discord.gg/WPjuhJpNGT" rel="noopener" class="discord-btn">
             <i class="fab fa-discord" aria-hidden="true"></i>
             Join Discord
@@ -779,7 +815,7 @@
   </header>
 
   <main id="main">
-    <section class="hero container" id="top">
+<section class="hero container" id="top">
       <div class="hero-badge reveal">
         <i class="fas fa-bolt" aria-hidden="true"></i>
         v2.0 Now Available
@@ -803,7 +839,123 @@
       </div>
     </section>
 
-    <section id="faq" class="reveal">
+    <section id="why" class="reveal">
+      <h2 class="section-title">Why use NebulaHub</h2>
+      <div class="why-grid container">
+        <article class="why-card">
+          <i class="fas fa-shield-halved" aria-hidden="true"></i>
+          <h3>Reliable Updates</h3>
+          <p>Frequent updates keep scripts stable and compatible with ongoing game changes.</p>
+        </article>
+        <article class="why-card">
+          <i class="fas fa-gauge-high" aria-hidden="true"></i>
+          <h3>Fast Performance</h3>
+          <p>Optimized load times and cleaner execution paths for smoother day-to-day usage.</p>
+        </article>
+        <article class="why-card">
+          <i class="fas fa-users" aria-hidden="true"></i>
+          <h3>Active Community</h3>
+          <p>Join a growing Discord community for support, announcements, and feature drops.</p>
+        </article>
+      </div>
+    </section>
+
+<section id="pricing" class="reveal">
+      <h2 class="section-title">Choose Your Access</h2>
+      <div class="pricing-grid">
+        <article class="pricing-card premium">
+          <div class="pricing-badge">Best Value</div>
+          <div class="pricing-icon"><i class="fas fa-crown" aria-hidden="true"></i></div>
+          <h3>Lifetime Premium</h3>
+          <p class="price">$5 <span>/ lifetime</span></p>
+          <ul class="features">
+            <li><i class="fas fa-check"></i> All script features</li>
+            <li><i class="fas fa-check"></i> All games supported</li>
+            <li><i class="fas fa-check"></i> Priority support</li>
+            <li><i class="fas fa-check"></i> Instant updates</li>
+            <li><i class="fas fa-check"></i> Premium-exclusive tools</li>
+            <li><i class="fas fa-check"></i> No ads forever</li>
+          </ul>
+          <a href="https://discord.gg/WPjuhJpNGT" rel="noopener" class="pricing-btn">
+            <i class="fas fa-shopping-cart" aria-hidden="true"></i> Buy Lifetime Key
+          </a>
+        </article>
+
+        <article class="pricing-card free">
+          <div class="pricing-icon"><i class="fas fa-gift" aria-hidden="true"></i></div>
+          <h3>Free Access</h3>
+          <p class="price">Free <span>/ key</span></p>
+          <ul class="features">
+            <li><i class="fas fa-check"></i> Basic script features</li>
+            <li><i class="fas fa-check"></i> Limited game support</li>
+            <li><i class="fas fa-check"></i> Community support</li>
+            <li class="not-included"><i class="fas fa-times"></i> Priority updates</li>
+            <li class="not-included"><i class="fas fa-times"></i> Premium features</li>
+            <li class="not-included"><i class="fas fa-times"></i> Ad-free experience</li>
+          </ul>
+          <a href="https://pandadevelopment.net" rel="noopener" class="pricing-btn" id="freeKeyBtn">
+            <i class="fas fa-external-link-alt" aria-hidden="true"></i> Get Free Key
+          </a>
+        </article>
+      </div>
+    </section>
+
+<section id="hwid" class="hwid-section reveal" aria-labelledby="hwid-title">
+      <article class="hwid-card">
+        <div class="hwid-icon"><i class="fas fa-sync-alt" aria-hidden="true"></i></div>
+        <h3 id="hwid-title">HWID Reset</h3>
+        <p>Need to reset your HWID? Use our reset service below and follow the instructions in Discord if needed.</p>
+        <a href="https://your-hwid-reset-site.com" rel="noopener" class="hwid-btn">
+          <i class="fas fa-redo" aria-hidden="true"></i> Reset HWID
+        </a>
+      </article>
+    </section>
+
+<section id="testimonials" class="reveal">
+      <h2 class="section-title">What Users Are Saying</h2>
+      <div class="testimonials-grid">
+        <article class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">JD</div>
+            <div>
+              <h3>JohnDoe123</h3>
+              <div class="stars-inline" aria-label="5 out of 5 stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p>“Best script hub I’ve used so far. Smooth experience and frequent updates.”</p>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">SK</div>
+            <div>
+              <h3>ScriptKing</h3>
+              <div class="stars-inline" aria-label="5 out of 5 stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p>“The support team is responsive and the product quality is premium.”</p>
+        </article>
+
+        <article class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">RX</div>
+            <div>
+              <h3>RobloxExpert</h3>
+              <div class="stars-inline" aria-label="5 out of 5 stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+            </div>
+          </div>
+          <p>“Great free tier and excellent value in premium. Very polished overall.”</p>
+        </article>
+      </div>
+    </section>
+
+<section id="faq" class="reveal">
       <h2 class="section-title">Frequently Asked Questions</h2>
       <div class="faq-container">
         <article class="faq-item">
@@ -848,100 +1000,6 @@
       </div>
     </section>
 
-    <section id="testimonials" class="reveal">
-      <h2 class="section-title">What Users Are Saying</h2>
-      <div class="testimonials-grid">
-        <article class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">JD</div>
-            <div>
-              <h3>JohnDoe123</h3>
-              <div class="stars-inline" aria-label="5 out of 5 stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <p>“Best script hub I’ve used so far. Smooth experience and frequent updates.”</p>
-        </article>
-
-        <article class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">SK</div>
-            <div>
-              <h3>ScriptKing</h3>
-              <div class="stars-inline" aria-label="5 out of 5 stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <p>“The support team is responsive and the product quality is premium.”</p>
-        </article>
-
-        <article class="testimonial-card">
-          <div class="testimonial-header">
-            <div class="testimonial-avatar">RX</div>
-            <div>
-              <h3>RobloxExpert</h3>
-              <div class="stars-inline" aria-label="5 out of 5 stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-            </div>
-          </div>
-          <p>“Great free tier and excellent value in premium. Very polished overall.”</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="pricing" class="reveal">
-      <h2 class="section-title">Choose Your Access</h2>
-      <div class="pricing-grid">
-        <article class="pricing-card premium">
-          <div class="pricing-badge">Best Value</div>
-          <div class="pricing-icon"><i class="fas fa-crown" aria-hidden="true"></i></div>
-          <h3>Lifetime Premium</h3>
-          <p class="price">$5 <span>/ lifetime</span></p>
-          <ul class="features">
-            <li><i class="fas fa-check"></i> All script features</li>
-            <li><i class="fas fa-check"></i> All games supported</li>
-            <li><i class="fas fa-check"></i> Priority support</li>
-            <li><i class="fas fa-check"></i> Instant updates</li>
-            <li><i class="fas fa-check"></i> Premium-exclusive tools</li>
-            <li><i class="fas fa-check"></i> No ads forever</li>
-          </ul>
-          <a href="https://discord.gg/WPjuhJpNGT" rel="noopener" class="pricing-btn">
-            <i class="fas fa-shopping-cart" aria-hidden="true"></i> Buy Lifetime Key
-          </a>
-        </article>
-
-        <article class="pricing-card free">
-          <div class="pricing-icon"><i class="fas fa-gift" aria-hidden="true"></i></div>
-          <h3>Free Access</h3>
-          <p class="price">Free <span>/ key</span></p>
-          <ul class="features">
-            <li><i class="fas fa-check"></i> Basic script features</li>
-            <li><i class="fas fa-check"></i> Limited game support</li>
-            <li><i class="fas fa-check"></i> Community support</li>
-            <li class="not-included"><i class="fas fa-times"></i> Priority updates</li>
-            <li class="not-included"><i class="fas fa-times"></i> Premium features</li>
-            <li class="not-included"><i class="fas fa-times"></i> Ad-free experience</li>
-          </ul>
-          <a href="https://pandadevelopment.net" rel="noopener" class="pricing-btn" id="freeKeyBtn">
-            <i class="fas fa-external-link-alt" aria-hidden="true"></i> Get Free Key
-          </a>
-        </article>
-      </div>
-    </section>
-
-    <section class="hwid-section reveal" aria-labelledby="hwid-title">
-      <article class="hwid-card">
-        <div class="hwid-icon"><i class="fas fa-sync-alt" aria-hidden="true"></i></div>
-        <h3 id="hwid-title">HWID Reset</h3>
-        <p>Need to reset your HWID? Use our reset service below and follow the instructions in Discord if needed.</p>
-        <a href="https://your-hwid-reset-site.com" rel="noopener" class="hwid-btn">
-          <i class="fas fa-redo" aria-hidden="true"></i> Reset HWID
-        </a>
-      </article>
-    </section>
   </main>
 
   <footer>
@@ -949,8 +1007,9 @@
     <p>The most advanced Roblox script hub.</p>
     <div class="footer-links">
       <a href="https://discord.gg/WPjuhJpNGT" rel="noopener">Discord</a>
-      <a href="#faq" target="_self">FAQ</a>
+      <a href="#why" target="_self">Why Use</a>
       <a href="#pricing" target="_self">Pricing</a>
+      <a href="#faq" target="_self">FAQ</a>
     </div>
     <p class="copyright">© 2026 NebulaHub. All rights reserved.</p>
   </footer>
@@ -1051,7 +1110,7 @@
     });
 
     const nav = document.querySelector(".site-nav");
-    const sectionIds = ["faq", "testimonials", "pricing"];
+    const sectionIds = ["why", "pricing", "hwid", "testimonials", "faq"];
     const navHashLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
 
     function updateActiveLink() {
