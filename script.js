@@ -32,8 +32,9 @@ togglePassword?.addEventListener("click", () => {
   keyInput.type = keyInput.type === "password" ? "text" : "password";
 });
 
-form?.addEventListener("submit", async (e) => {
+form.addEventListener("submit", (e) => {
   e.preventDefault();
+});
 
   const key = keyInput.value.trim();
   if (!key){
