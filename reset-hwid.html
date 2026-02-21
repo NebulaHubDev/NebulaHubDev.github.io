@@ -4,14 +4,203 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NebulaHub • Reset HWID</title>
-  <link rel="stylesheet" href="styles.css">
-<script src="script.js"></script>
-</head>
+  <style>
+    :root{
+      --bg:#070816;
+      --card:#0f1226;
+      --card2:#0b0d1e;
+      --text:#e8eaf6;
+      --muted:#a9b0d4;
+      --accent:#7c3aed;
+      --accent2:#3b82f6;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+    }
 
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .container{position:relative; min-height:100%; padding:48px 16px}
+    .background-gradient{
+      position:absolute; inset:0; pointer-events:none;
+      background:
+        radial-gradient(900px 400px at 20% 10%, rgba(124,58,237,.35), transparent 60%),
+        radial-gradient(700px 350px at 80% 0%, rgba(59,130,246,.28), transparent 60%),
+        radial-gradient(800px 500px at 50% 100%, rgba(124,58,237,.18), transparent 65%);
+      filter: blur(0px);
+    }
+
+    .content-wrapper{
+      position:relative;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .header{
+      text-align:center;
+      margin-bottom: 18px;
+    }
+    .logo h1{
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: .3px;
+    }
+    .subtitle{
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .main-card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+      backdrop-filter: blur(10px);
+    }
+
+    .card-header h2{margin:0 0 6px; font-size: 20px}
+    .card-header p{margin:0 0 18px; color: var(--muted)}
+
+    .form{display:flex; flex-direction:column; gap:14px}
+
+    .form-group label{
+      display:block;
+      margin-bottom:8px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .input-wrap{
+      position:relative;
+      display:flex;
+      align-items:center;
+    }
+
+    .form-input{
+      width:100%;
+      padding: 12px 44px 12px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(10,12,26,.65);
+      color: var(--text);
+      outline:none;
+    }
+    .form-input:focus{
+      border-color: rgba(124,58,237,.65);
+      box-shadow: 0 0 0 4px rgba(124,58,237,.15);
+    }
+
+    .toggle-password{
+      position:absolute;
+      right:10px;
+      width:34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      border-radius:10px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      cursor:pointer;
+    }
+    .toggle-password:hover{color: var(--text)}
+    .toggle-password svg{width:18px; height:18px}
+
+    .input-hint{
+      display:block;
+      margin-top:8px;
+      color: rgba(169,176,212,.9);
+      font-size: 12px;
+    }
+
+    .submit-btn{
+      width:100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: none;
+      cursor:pointer;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      box-shadow: 0 10px 25px rgba(124,58,237,.22);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+    }
+    .submit-btn:active{transform: translateY(1px)}
+
+    .hidden{display:none}
+
+    .status-container{
+      margin-top: 14px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      background: rgba(10,12,26,.55);
+    }
+    .status-message{font-weight:700}
+    .status-details{margin-top:6px; color: var(--muted); font-size: 13px}
+
+    .success-message{
+      margin-top: 14px;
+      border-radius: 14px;
+      padding: 14px;
+      background: rgba(34,197,94,.12);
+      border: 1px solid rgba(34,197,94,.22);
+      text-align:center;
+    }
+    .success-icon{
+      width:46px; height:46px;
+      margin: 0 auto 8px;
+      border-radius: 14px;
+      display:grid; place-items:center;
+      background: rgba(34,197,94,.18);
+      color: rgba(34,197,94,1);
+    }
+    .success-icon svg{width:22px; height:22px}
+
+    .reset-form-btn{
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      cursor:pointer;
+    }
+    .reset-form-btn:hover{background: rgba(255,255,255,.10)}
+
+    .info-section{
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .info-box{
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px;
+    }
+    .info-box h3{margin:0 0 6px; font-size: 15px}
+    .info-box p{margin:0; color: var(--muted); font-size: 13px}
+
+    @media (max-width: 780px){
+      .info-section{grid-template-columns:1fr}
+    }
+  </style>
+</head>
 <body>
   <div class="container">
     <div class="background-gradient"></div>
-
     <div class="content-wrapper">
       <header class="header">
         <div class="logo">
@@ -19,17 +208,14 @@
         </div>
         <p class="subtitle">Reset your HWID</p>
       </header>
-
       <main class="main-card">
         <div class="card-header">
           <h2>Reset HWID</h2>
           <p>Enter your key to reset your hardware ID</p>
         </div>
-
-       <form id="resetForm" class="form" action="javascript:void(0)">
+        <form id="resetForm" class="form" action="javascript:void(0)">
           <div class="form-group">
             <label for="key">Key</label>
-
             <div class="input-wrap">
               <input
                 type="password"
@@ -40,28 +226,23 @@
                 class="form-input"
                 autocomplete="off"
               />
-
               <button type="button" class="toggle-password" id="togglePassword" aria-label="Show/Hide key">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" fill="currentColor"></path>
                 </svg>
               </button>
             </div>
-
             <span class="input-hint">Your key must be active</span>
           </div>
-
           <button type="submit" class="submit-btn" id="submitBtn">
             <span class="btn-text">Reset HWID</span>
             <span class="btn-loader hidden"></span>
           </button>
         </form>
-
         <div id="statusContainer" class="status-container hidden">
           <div id="statusMessage" class="status-message"></div>
           <div id="statusDetails" class="status-details"></div>
         </div>
-
         <div id="successMessage" class="success-message hidden">
           <div class="success-icon">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -73,7 +254,6 @@
           <button type="button" class="reset-form-btn" id="newResetBtn">Perform Another Reset</button>
         </div>
       </main>
-
       <div class="info-section">
         <div class="info-box">
           <h3>Fast &amp; Reliable</h3>
@@ -91,6 +271,78 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    const form = document.getElementById("resetForm");
+    const keyInput = document.getElementById("key");
+    const togglePassword = document.getElementById("togglePassword");
+    const statusContainer = document.getElementById("statusContainer");
+    const statusMessage = document.getElementById("statusMessage");
+    const statusDetails = document.getElementById("statusDetails");
+    const successMessage = document.getElementById("successMessage");
+    const newResetBtn = document.getElementById("newResetBtn");
+
+    function showStatus(type, msg, details=""){
+      statusContainer.classList.remove("hidden");
+      successMessage.classList.add("hidden");
+      statusMessage.textContent = msg;
+      statusDetails.textContent = details;
+      statusContainer.style.borderColor =
+        type === "error" ? "rgba(239,68,68,.35)" :
+        type === "success" ? "rgba(34,197,94,.35)" :
+        "rgba(255,255,255,.10)";
+      statusContainer.style.background =
+        type === "error" ? "rgba(239,68,68,.08)" :
+        type === "success" ? "rgba(34,197,94,.10)" :
+        "rgba(10,12,26,.55)";
+    }
+
+    togglePassword?.addEventListener("click", () => {
+      keyInput.type = keyInput.type === "password" ? "text" : "password";
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      
+      const key = keyInput.value.trim();
+      if (!key){
+        showStatus("error", "Key required", "Please enter your key.");
+        return;
+      }
+
+      showStatus("info", "Processing...", "Contacting NebulaHub servers...");
+
+      try {
+        // IMPORTANT:
+        // GitHub Pages is STATIC. This demo just fakes success.
+        // To make it real, replace the fetch URL with YOUR backend endpoint.
+        
+        // Example real call:
+        // const res = await fetch("https://YOUR-API/reset-hwid", {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify({ key })
+        // });
+        // const data = await res.json();
+        // if (!data.ok) throw new Error(data.reason || "Reset failed");
+        
+        await new Promise(r => setTimeout(r, 900)); // fake delay
+        
+        // Fake success:
+        statusContainer.classList.add("hidden");
+        successMessage.classList.remove("hidden");
+        keyInput.value = "";
+        keyInput.type = "password";
+      } catch (err){
+        showStatus("error", "Reset failed", String(err.message || err));
+      }
+    });
+
+    newResetBtn?.addEventListener("click", () => {
+      successMessage.classList.add("hidden");
+      statusContainer.classList.add("hidden");
+      keyInput.value = "";
+      keyInput.focus();
+    });
+  </script>
 </body>
 </html>
